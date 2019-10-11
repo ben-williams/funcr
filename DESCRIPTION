@@ -1,0 +1,21 @@
+Package: funcr
+Type: Package
+Title: Helper functions for ggplot figure styles and axis labels
+Version: 0.1.0
+Author: Ben Williams [aut, cre]
+Maintainer: Ben Williams <ben.williams@alaska.gov>
+Description: Functions for producing for consistent figure styles 
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    dplyr,
+    extrafont
+Suggests:
+    tidyverse,
+    scales,
+    devtools,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 6.1.1
