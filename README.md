@@ -102,7 +102,7 @@ ggplot(df, aes(year, age, size = y)) +
 <img src="man/figures/README-unnamed-chunk-7-1.png" width="60%" />
 
 More fonts are available via the `extrafont` package. This was loaded on
-your machine along with the `fngr` package.
+your machine along with the `funcr` package.
 
 First you must load the available fonts (*Note that this must be done
 every time you update R*). There are a lot of fonts (likely more than
