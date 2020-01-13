@@ -1,24 +1,24 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# fngr
+# funcr
 
 <!-- badges: start -->
 
 <!-- badges: end -->
 
-The goal of `fngr` is to help maintain consistency in figures developed
-within ADF\&G. If you have any problems or improvements to suggest
-please post theme [here](https://github.com/commfish/fngr/issues).
+The goal of `funcr` is to help maintain consistency in figures. If you
+have any problems or improvements to suggest please post theme
+[here](https://github.com/commfish/fngr/issues).
 
 ## Installation
 
 You can install the released version of fngr from
-[GitHub](https://github.com/commfish) with:
+[GitHub](https://ben-williams) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("commfish/fngr")
+devtools::install_github("ben-williams/funcr")
 ```
 
 ## Example: theme\_report() & theme\_present()
@@ -26,7 +26,7 @@ devtools::install_github("commfish/fngr")
 Load the package library per usual:
 
 ``` r
-library(fngr)
+library(funcr)
 library(tidyverse)
 library(scales)
 ```

@@ -26,6 +26,15 @@ Adjust axis tick marks and labels
 \examples{
 
 data.frame(year = 1970:2019,
-           catch = rnorm(50, 10, 2))
+catch = rnorm(50, 10, 2)) -> df
+
+xaxis <- tickr(df, year, 10)
+
+df \%>\%
+  ggplot(aes(year, catch)) +
+  geom_point() +
+  scale_x_continuous(labels = xaxis$labels, breaks = xaxis$breaks)
+
+theme_set(theme_report(base_size = 12, base_family = "Bookman"))
 
 }

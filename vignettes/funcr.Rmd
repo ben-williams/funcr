@@ -67,7 +67,7 @@ ggplot(df, aes(year, age, size = y)) +
 The base figures from `ggplot` have a gray background and grids etc. Using `theme_set` will update the formats of all figures created in a session. 
 
 ```{r}
-theme_set(theme_sleek())
+theme_set(theme_report())
 
 xaxis = tickr(df, year, 10)
 yaxis = tickr(df, age, 2)
