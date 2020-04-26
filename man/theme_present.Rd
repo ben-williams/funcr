@@ -9,6 +9,9 @@ theme_present(base_size = 18, base_family = "sans")
 \arguments{
 \item{base_family}{}
 }
+\value{
+
+}
 \description{
 Set figure theme for presentations
 }

@@ -9,6 +9,9 @@ theme_sleek(base_size = 11, base_family = "Times")
 \arguments{
 \item{base_family}{}
 }
+\value{
+
+}
 \description{
 Set your figure theme consistently
 }

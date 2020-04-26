@@ -5,6 +5,7 @@
 #' @param to = step increase desired e.g., every 5 years
 #' @param start = adjust the start value
 #' @param end = adjust the end vlaue
+#' @param min = lowest value to label
 #'
 #' @return tickr
 #' @export tickr
@@ -23,7 +24,7 @@
 #'
 #' theme_set(theme_report(base_size = 12, base_family = "Bookman"))
 #'
-tickr <- function(data, var, to = 5, start = NULL, end = NULL){
+tickr <- function(data, var, to = 5, start = NULL, end = NULL, min = NULL){
 
   data %>%
     dplyr::summarise(min = min({{var}}, na.rm = T),
@@ -33,24 +34,36 @@ tickr <- function(data, var, to = 5, start = NULL, end = NULL){
 
     data.frame(breaks = out$min:out$max) %>%
       dplyr::mutate(labels = ifelse(breaks %in%
-                                      seq(to * min(breaks) / to, max(breaks), by = to), breaks, ""))
+                                      seq(to * min(breaks) / to,
+                                          max(breaks), by = to), breaks, ""))
 
-  } else if(!is.null(start) & is.null(end)){
+  } else if(!is.null(start) & is.null(end) & is.null(min)){
 
+      data.frame(breaks = start:out$max) %>%
+        dplyr::mutate(labels = ifelse(breaks %in%
+                                        seq(to * start / to, max(breaks),
+                                            by = to), breaks, ""))
 
-    data.frame(breaks = start:out$max) %>%
-      dplyr::mutate(labels = ifelse(breaks %in%
-                                      seq(to * start / to, max(breaks), by = to), breaks, ""))
+  } else if(!is.null(start) & is.null(end) & !is.null(min)){
+      data.frame(breaks = start:out$max) %>%
+        dplyr::mutate(labels = ifelse(breaks %in%
+                                        seq(to * start / to, max(breaks),
+                                            by = to), breaks, "")) %>%
+        dplyr::filter(breaks >= min) -> lb
+    lb$labels[1] <- lb$breaks[1]
+    lb
 
   } else if(is.null(start) & !is.null(end)){
 
     data.frame(breaks = out$min:end) %>%
       dplyr::mutate(labels = ifelse(breaks %in%
-                                      seq(to * min(breaks) / to, end, by = to), breaks, ""))
+                                      seq(to * min(breaks) / to, end, by = to),
+                                    breaks, ""))
   } else {
 
     data.frame(breaks = start:end) %>%
       dplyr::mutate(labels = ifelse(breaks %in%
-                                      seq(to * start / to, end, by = to), breaks, ""))
+                                      seq(to * start / to, end, by = to),
+                                    breaks, ""))
   }
 }

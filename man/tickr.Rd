@@ -4,7 +4,7 @@
 \alias{tickr}
 \title{Adjust axis tick marks and labels}
 \usage{
-tickr(data, var, to = 5, start = NULL, end = NULL)
+tickr(data, var, to = 5, start = NULL, end = NULL, min = NULL)
 }
 \arguments{
 \item{data}{= input dataframe}
@@ -16,6 +16,8 @@ tickr(data, var, to = 5, start = NULL, end = NULL)
 \item{start}{= adjust the start value}
 
 \item{end}{= adjust the end vlaue}
+
+\item{min}{= lowest value to label}
 }
 \value{
 tickr

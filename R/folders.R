@@ -12,10 +12,15 @@
 #' the ... can be used to create additional folders
 #' folders("tables", "text", "tmb")
 folders <- function(...){
-  dir.create("data")
-  dir.create("code")
-  dir.create("figs")
-  dir.create("output")
+
+  if(dir.exists("data")==FALSE){
+  dir.create("data")}
+  if(dir.exists("code")==FALSE){
+    dir.create("code")}
+  if(dir.exists("figs")==FALSE){
+    dir.create("figs")}
+  if(dir.exists("output")==FALSE){
+    dir.create("output")}
   for(i in length(...)) {
     dir.create(...[i])
   }

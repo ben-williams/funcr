@@ -2,6 +2,8 @@
 
 export(folders)
 export(mode)
+export(scale_x_tickr)
+export(scale_y_tickr)
 export(theme_present)
 export(theme_report)
 export(theme_sleek)
