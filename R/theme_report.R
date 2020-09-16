@@ -25,8 +25,8 @@ theme_report <- function(base_size = 11, base_family = "Times") {
 
   half_line <- base_size/2
 
-  theme_light(base_size = base_size, base_family = base_family) +
-    theme(
+  ggplot2::theme_light(base_size = base_size, base_family = base_family) +
+    ggplot2::theme(
       panel.grid.major = element_blank(),
       panel.grid.minor = element_blank(),
       axis.ticks.length = unit(half_line / 2.2, "pt"),

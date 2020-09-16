@@ -10,7 +10,8 @@ Encoding: UTF-8
 LazyData: true
 Imports:
     dplyr,
-    extrafont
+    extrafont,
+    ggplot2
 Suggests:
     tidyverse,
     scales,
@@ -18,4 +19,4 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1

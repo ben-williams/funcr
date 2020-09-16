@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of `funcr` is to help maintain consistency in figures.
+The goal of `funcr` is to keep a group of functions for maintaining consistency in figures, folder structure, etc.
 If you have any problems or improvements to suggest please post theme [here](https://github.com/commfish/fngr/issues).
 
 ## Installation
@@ -132,7 +132,7 @@ Revert back to the original `theme_report()` font.
 theme_set(theme_report())
 ```
 
-## Example: tickr()
+## Example: scale_x_tickr()
 
 The basic `ggplot` figure spaces years (x-axis) about every 5-10, depending on the timeseries length. 
 Note that there are not any tick marks between the axis labels. 
@@ -188,16 +188,16 @@ ggplot(df, aes(year, age, size = y)) +
                                 rep("", 4), "2015", rep("", 2)))
 ```
 
-The `tickr()` function will provide tick marks for every year (or age) and labels at a defined frequency.
+The `tickr()` function will provide tick marks for every year (or age) and labels at a defined frequency. `tickr` is the underlying function for `scale_x_tickr` and `scale_y_tickr`.
 
-Using `tickr()` the base level of labels is set at every 5th value. 
+Using `scale_x_tickr()` the base level of labels is set at every 5th value. 
 
 ```{r, cache=TRUE}
 xaxis = tickr(df, year)
 
 ggplot(df, aes(year, age, size = y)) + 
   geom_point() +
-  scale_x_continuous(breaks = xaxis$breaks, labels = xaxis$labels) 
+  scale_x_ticker(breaks = xaxis$breaks, labels = xaxis$labels) 
 ```
 
 This can be adjusted easily.
