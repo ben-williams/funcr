@@ -32,8 +32,8 @@ theme_report <- function(base_size = 11, base_family = "Times") {
 
   ggplot2::theme_light(base_size = base_size, base_family = base_family) +
     ggplot2::theme(
-      panel.grid.major = element_blank(),
-      panel.grid.minor = element_blank(),
+      panel.grid.major = ggplot2::element_blank(),
+      panel.grid.minor = ggplot2::element_blank(),
       axis.ticks.length = grid::unit(half_line / 2.2, "pt"),
       strip.background = ggplot2::element_rect(fill = NA, colour = NA),
       strip.text.x = element_text(colour = "black"),
