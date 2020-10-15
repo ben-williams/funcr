@@ -51,12 +51,16 @@
 best_f <- function(data, m, last_ofl, type = 1, f_ratio = NULL, m2 = NULL){
 
   # helper function
-  catch = function(naa, waa, saa, m, f_ofl, f_ratio = NULL){
+  catch = function(naa, waa, saa, m, f_ofl, f_ratio = NULL, gear = NULL){
 
+
+    if(!is.null(gear)) f_ratio = 1 - f_ratio
     if(!is.null(f_ratio)){
-      naa * waa * saa * f_ofl * (1 - f_ratio) /
-        (f_ofl * (1 - f_ratio) * saa + m) * (1 - exp(-f_ofl * (1 - f_ratio) * saa - m))
+      naa * waa * saa * f_ofl * f_ratio /
+        (f_ofl * f_ratio * saa + m) * (1 - exp(-f_ofl * f_ratio * saa - m))
+
     } else {
+
       naa * waa * saa * f_ofl /
         (f_ofl * saa + m) * (1 - exp(-f_ofl * saa - m))
     }
@@ -92,7 +96,7 @@ best_f <- function(data, m, last_ofl, type = 1, f_ratio = NULL, m2 = NULL){
     saa_02 = data$saa_02
 
     g = function(f_ofl){
-      (last_ofl - sum(catch(naa, waa, saa_01, m, f_ofl, f_ratio),
+      (last_ofl - sum(catch(naa, waa, saa_01, m, f_ofl, f_ratio, gear = 1),
                       catch(naa, waa, saa_02, m, f_ofl, f_ratio)))^2
     }
   }
@@ -146,8 +150,8 @@ best_f <- function(data, m, last_ofl, type = 1, f_ratio = NULL, m2 = NULL){
 
 
     g = function(f_ofl){
-      (last_ofl - sum(catch(naa_1, waa_1, saa_11, m, f_ofl, f_ratio),
-                      catch(naa_2, waa_2, saa_21, m2, f_ofl, f_ratio),
+      (last_ofl - sum(catch(naa_1, waa_1, saa_11, m, f_ofl, f_ratio, gear = 1),
+                      catch(naa_2, waa_2, saa_21, m2, f_ofl, f_ratio, gear = 1),
                       catch(naa_1, waa_1, saa_12, m, f_ofl, f_ratio),
                       catch(naa_2, waa_2, saa_22, m2, f_ofl, f_ratio)))^2
     }
