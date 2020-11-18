@@ -11,17 +11,16 @@
 #' folders() # creates a data, code, figs, and ouput folder by default
 #' the ... can be used to create additional folders
 #' folders("tables", "text", "tmb")
-folders <- function(...){
 
-  if(dir.exists("data")==FALSE){
-  dir.create("data")}
-  if(dir.exists("code")==FALSE){
-    dir.create("code")}
-  if(dir.exists("figs")==FALSE){
-    dir.create("figs")}
-  if(dir.exists("output")==FALSE){
-    dir.create("output")}
+folders <- function(...){
+  dirs = c("code", "data", "figs", "output")
+
+  for(i in 1:length(dirs)){
+    if(dir.exists(dirs[i])==FALSE){
+      dir.create(dirs[i])
+    }
+  }
   for(i in length(...)) {
-    dir.create(...[i])
+      dir.create(...[i])
   }
 }
